@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .jumbotron {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: scroll;
+            max-height: 600px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f2f2f2;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .restaurant-id {
+            font-weight: bold;
+        }
+        
+        .home-link {
+            background-color: #4c68af;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            margin-left: 5%;
+        }
+        
+        .home-link a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .home-link:hover {
+            background-color: #455fa0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Restaurant List</h1>
+        </div>
+
+        <p class="home-link"><a href="/">Back to home</a></p>
+        <p>
+          Total restaurants in database: <%= nItems %></p>
+
+        <ul>
+            <% for (var i of items) { %>
+                <li>
+                    <span class="restaurant-id">Restaurant ID:</span>
+                    <a href="/details?_id=<%= i._id %>">
+                        <%= i.restaurant_id %>
+                    </a>
+                </li>
+                <% } %>
+        </ul>
+
+    </div>
+</body>
+
+</html>

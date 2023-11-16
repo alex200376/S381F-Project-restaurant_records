@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create Restaurant</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .jumbotron {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .container {
+        max-width: 550px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    input[type="text"],
+    [type="number"] {
+        width: 500px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    input[type="submit"] {
+        background-color: #4c68af;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .container {
+        display: flexbox;
+        justify-content: center;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #455fa0;
+    }
+    
+    .error-message {
+        color: red;
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>Create Restaurant</h1>
+    </div>
+    <div class="container">
+        <form action="/create" method="POST">
+
+            <label for="restaurant_id">Restaurant ID:(XXXXXXXX)</label>
+            <input type="number" id="restaurant_id" name="restaurant_id" pattern="[0-9]{8}" required><br><br>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="cuisine">Cuisine:</label>
+            <input type="text" id="cuisine" name="cuisine" required><br><br>
+
+            <label for="building">Building:</label>
+            <input type="number" id="building" name="building" required><br><br>
+
+            <label for="borough">Borough:</label>
+            <input type="text" id="borough" name="borough" required><br><br>
+
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street"><br><br>
+
+            <label for="zipcode">Zip Code:</label>
+            <input type="text" id="zipcode" name="zipcode" pattern="[0-9]{5}"><br><br>
+
+            <input type="submit" value="Create">
+            <a href="/home">Back to home</a>
+
+        </form>
+    </div>
+</body>
+
+</html>

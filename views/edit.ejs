@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Restaurant Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .jumbotron {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        form {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>Update Restaurant Information</h1>
+    </div>
+    <div class="container">
+        <form action="/update" method="POST">
+            <label for="restaurantID"><b>Restaurant ID*: <%= item.restaurant_id %></b></label><br><br>
+            <input type="hidden" id="postId" name="postId" value="<%= item._id %>" />
+
+            <label for="name"><b>Restaurant Name*:</b></label>
+            <input type="text" id="name" name="name" class="form-control" value="<% if (item.name) { %><%= item.name %><% } %>" /><br><br>
+
+            <label for="borough"><b>Borough:</b></label>
+            <input type="text" id="borough" name="borough" class="form-control" value="<% if (item.borough) { %><%= item.borough %><% } %>" /><br><br>
+
+            <label for="street"><b>Street:</b></label>
+            <input type="text" id="street" name="street" class="form-control" value="<% if (item.address.street) { %><%= item.address.street %><% } %>" /><br><br>
+
+            <label for="zipcode"><b>Restaurant Zipcode:</b></label>
+            <input type="text" id="zipcode" name="zipcode" class="form-control" value="<% if (item.address.zipcode) { %><%= item.address.zipcode %><% } %>" /><br><br>
+
+            <label for="cuisine"><b>Cuisine:</b></label>
+            <input type="text" id="cuisine" name="cuisine" class="form-control" value="<% if (item.cuisine) { %><%= item.cuisine %><% } %>" /><br><br>
+
+            <label for="building"><b>Building:</b></label><br>
+            <input type="text" id="building" name="building" class="form-control" value="<% if (item.address.building) { %><%= item.address.building %><% } %>" /><br><br>
+
+            <input type="submit" value="Update">
+            <a href="/home">Back to home</a>
+        </form>
+    </div>
+</body>
+
+</html>

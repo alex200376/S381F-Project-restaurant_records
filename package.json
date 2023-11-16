@@ -1,0 +1,21 @@
+{
+    "name": "restaurants record system",
+    "description": "COMPS381F project",
+    "author": "13340714,13313945,13364400",
+    "version": "1.0",
+    "engines": {
+        "node": "v18.17.1"
+    },
+    "dependencies": {
+        "assert": "^1.4.1",
+        "body-parser": "^1.18.3",
+        "cookie-session": "latest",
+        "ejs": "*",
+        "express": "*",
+        "mongodb": "^6.0.0"
+    },
+    "engine": "node >= 12.0.0",
+    "scripts": {
+        "start": "node server.js"
+    }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .menu-link {
+            display: block;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .menu-link:hover {
+            background-color: #0056b3;
+        }
+        
+        .jumbotron {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="jumbotron text-center">
+        <h1>Home - <span id="date"></span> <span id="time"></span></h1>
+    </div>
+    <div class="container">
+        <ul>
+            <li><a class="menu-link" href="/create">Create New Restaurant Information</a></li>
+            <li><a class="menu-link" href="/find">Find Restaurant Information by restaurant ID</a></li>
+            <li><a class="menu-link" href="/list">Show all restaurant ID</a></li>
+        </ul>
+
+        <div class="logout-link">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+</body>
+<script>
+    function updateTimestamp() {
+        var dateElement = document.getElementById("date");
+        var timeElement = document.getElementById("time");
+
+        var now = new Date();
+        var date = now.toLocaleDateString();
+        var time = now.toLocaleTimeString();
+
+        dateElement.textContent = date;
+        timeElement.textContent = time;
+    }
+
+    setInterval(updateTimestamp, 1000); // Update every second
+</script>
+
+</html>
