@@ -307,6 +307,6 @@ app.delete("/api/item/restaurantID/:restaurantID", function(req, res) {
     }
 });
 // Start the server
-app.listen(3000, () => {
+app.listen(8099, () => {
     console.log("Server running on port 3000");
 });
