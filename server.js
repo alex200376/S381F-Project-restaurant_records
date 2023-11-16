@@ -24,9 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Sample user data
 const usersinfo = [
-  { name: "13340714", password: "a35257925" },
   { name: "admin", password: "admin" },
-  { name: "user", password: "user" },
 ];
 
 // MongoDB helper functions
