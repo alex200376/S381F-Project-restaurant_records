@@ -22,12 +22,12 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Sample user data
+
 const usersinfo = [
   { name: "admin", password: "admin" },
 ];
 
-// MongoDB helper functions
+
 const connectToMongo = async () => {
   const client = await MongoClient.connect(mongourl);
   return client.db(dbName);
@@ -56,7 +56,7 @@ const deleteDocument = async (db, criteria) => {
   return result;
 };
 
-// Authentication middleware
+
 const requireAuthentication = (req, res, next) => {
   if (req.session.authenticated) {
     next();
@@ -106,7 +106,7 @@ app.get("/home", requireAuthentication, (req, res) => {
 
 app.get("/list", requireAuthentication, async (req, res) => {
   const db = await connectToMongo();
-  const docs = await findDocuments(db, {}); // Retrieve all documents
+  const docs = await findDocuments(db, {});
   res.render("display", { nItems: docs.length, items: docs });
 });
 
@@ -129,7 +129,7 @@ app.post("/create", requireAuthentication, async (req, res) => {
     const db = await connectToMongo();
     const createdDocument = {
       _id: new ObjectId(),
-      restaurant_id: req.body.restaurant_id, // Use the provided restaurant ID
+      restaurant_id: req.body.restaurant_id, 
       name: req.body.name,
       cuisine: req.body.cuisine,
       borough: req.body.borough,
@@ -191,7 +191,7 @@ app.get("/create", function (req, res) {
 app.post("/update", requireAuthentication, async (req, res) => {
   try {
     const db = await connectToMongo();
-    const criteria = { _id: new ObjectId(req.body.postId) }; // Assuming the unique identifier for the document is "_id"
+    const criteria = { _id: new ObjectId(req.body.postId) }; 
     const updatedDocument = {
       $set: {
         name: req.body.name,
@@ -201,7 +201,7 @@ app.post("/update", requireAuthentication, async (req, res) => {
           building: req.body.building,
 
           street: req.body.street || "",
-          zipcode: req.body.zipcode || "", // Assuming you have a field for the zipcode in the database
+          zipcode: req.body.zipcode || "", 
         },
       },
     };
@@ -319,5 +319,5 @@ app.delete("/api/item/restaurantID/:restaurantID", function (req, res) {
 });
 // Start the server
 app.listen(8099, () => {
-  console.log("Server running on port 3000");
+  console.log("Server running on port 8099");
 });
