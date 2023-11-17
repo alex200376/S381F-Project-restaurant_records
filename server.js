@@ -135,7 +135,6 @@ app.post("/create", requireAuthentication, async (req, res) => {
       borough: req.body.borough,
       address: {
         building: req.body.building,
-
         street: req.body.street || "",
         zipcode: req.body.zipcode || "",
       },
@@ -250,16 +249,28 @@ app.get("/delete", requireAuthentication, async (req, res) => {
 app.post('/api/restaurants', async (req, res) => {
   try {
     const db = await connectToMongo();
-    const createdDocument = req.body; // Assuming the entire request body is a valid JSON object
-    const result = await db.collection('restaurants').insertOne(createdDocument);
+    const newRestaurant = {
+      _id: new ObjectId(),
+      restaurant_id: req.body.restaurant_id,
+      name: req.body.name,
+      cuisine: req.body.cuisine,
+      borough: req.body.borough,
+      address: {
+        building: req.body.building,
+        street: req.body.street || '',
+        zipcode: req.body.zipcode || '',
+      },
+    };
+    const result = await db.collection('restaurants').insertOne(newRestaurant);
+    insertedCount=+1;
     if (result.insertedCount === 1) {
-      res.status(201).json(result.ops[0]);
+      res.status(201).json({ message: 'Restaurant created successfully.', restaurant: newRestaurant });
     } else {
-      throw new Error('Failed to create the restaurant.');
+      res.status(500).json({ error: 'Failed to create the restaurant.' });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Failed to create the restaurant.' });
+    res.status(500).json({ error: 'An error occurred while creating the restaurant.' });
   }
 });
 // Get all restaurants
