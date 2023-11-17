@@ -246,77 +246,94 @@ app.get("/delete", requireAuthentication, async (req, res) => {
   }
 });
 
-app.post("/api/item/restaurant_id/:restaurant_id", function (req, res) {
-  if (req.params.restaurantID) {
-    console.log(req.body);
-    const client = new MongoClient(mongourl);
-    client.connect(function (err) {
-      assert.equal(null, err);
-      console.log("Connected successfully to server");
-      const db = client.db(dbName);
-      let newDocument = {};
-      newDocument["restaurant_id"] = req.body.restaurantID;
-
-      db.collection("restaurants").insertOne(
-        newDocument,
-        function (err, results) {
-          assert.equal(err, null);
-          client.close();
-          res.status(200).end();
-        }
-      );
-    });
-  } else {
-    res.status(500).json({ error: "missing restaurant ID" });
+// Create a new restaurant
+app.post('/api/restaurants', async (req, res) => {
+  try {
+    const db = await connectToMongo();
+    const createdDocument = req.body; // Assuming the entire request body is a valid JSON object
+    const result = await db.collection('restaurants').insertOne(createdDocument);
+    if (result.insertedCount === 1) {
+      res.status(201).json(result.ops[0]);
+    } else {
+      throw new Error('Failed to create the restaurant.');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to create the restaurant.' });
+  }
+});
+// Get all restaurants
+app.get('/api/restaurants', async (req, res) => {
+  try {
+    const db = await connectToMongo();
+    const docs = await db.collection('restaurants').find({}).toArray();
+    res.json(docs);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to retrieve restaurants.' });
   }
 });
 
-//find
-app.get("/api/item/restaurant_id/:restaurant_id", function (req, res) {
-  if (req.params.restaurantID) {
-    let criteria = {};
-    criteria["restaurant_id"] = req.params.restaurantID;
-    const client = new MongoClient(mongourl);
-    client.connect(function (err) {
-      assert.equal(null, err);
-      console.log("Connected successfully to server");
-      const db = client.db(dbName);
-
-      findDocuments(db, criteria, function (docs) {
-        client.close();
-        console.log("Closed DB connection");
-        res.status(200).json(docs);
-      });
-    });
-  } else {
-    res.status(500).json({ error: "missing restaurant id" });
+// Get a restaurant by ID
+app.get('/api/restaurants/:restaurant_id', async (req, res) => {
+  try {
+    const db = await connectToMongo();
+    const doc = await db.collection('restaurants').findOne({ restaurant_id: req.params.restaurant_id });
+    if (doc) {
+      res.json(doc);
+    } else {
+      res.status(404).json({ error: 'Restaurant not found.' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to retrieve the restaurant.' });
   }
 });
 
-//delete
-app.delete("/api/item/restaurantID/:restaurantID", function (req, res) {
-  if (req.params.restaurantID) {
-    let criteria = {};
-    criteria["restaurantID"] = req.params.restaurantID;
-    const client = new MongoClient(mongourl);
-    client.connect(function (err) {
-      assert.equal(null, err);
-      console.log("Connected successfully to server");
-      const db = client.db(dbName);
-
-      db.collection("restaurants").deleteMany(
-        criteria,
-        function (err, results) {
-          assert.equal(err, null);
-          client.close();
-          res.status(200).end();
-        }
-      );
-    });
-  } else {
-    res.status(500).json({ error: "missing restaurant id" });
+// Update a restaurant by restaurant_id
+app.put('/api/restaurants/:restaurant_id', async (req, res) => {
+  try {
+    const db = await connectToMongo();
+    const documentID = { restaurant_id: req.params.restaurant_id };
+    const updatedDocument = {
+      $set: {
+        name: req.body.name,
+        cuisine: req.body.cuisine,
+        borough: req.body.borough,
+        building: req.body.building,
+        street: req.body.street || '',
+        zipcode: req.body.zipcode || '',
+      },
+    };
+    const result = await db.collection('restaurants').updateOne(documentID, updatedDocument);
+    if (result.modifiedCount > 0) {
+      res.json({ message: 'Restaurant updated successfully.' });
+    } else {
+      res.status(404).json({ error: 'Restaurant not found.' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to update the restaurant.' });
   }
 });
+
+// Delete a restaurant by restaurant_id
+app.delete('/api/restaurants/:restaurant_id', async (req, res) => {
+  try {
+    const db = await connectToMongo();
+    const documentID = { restaurant_id: req.params.restaurant_id };
+    const result = await db.collection('restaurants').deleteOne(documentID);
+    if (result.deletedCount > 0) {
+      res.json({ message: 'Restaurant deleted successfully.' });
+    } else {
+      res.status(404).json({ error: 'Restaurant not found.' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to delete the restaurant.' });
+  }
+});
+
 // Start the server
 app.listen(8099, () => {
   console.log("Server running on port 8099");
