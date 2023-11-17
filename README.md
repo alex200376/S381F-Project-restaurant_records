@@ -1,4 +1,4 @@
-Restaurants record system
+<h1>Restaurant Management System</h1>
 
 Group: 34
 Name: 
