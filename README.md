@@ -1,11 +1,12 @@
-Restaurant management system
+Restaurants record system
 
-Group: 11
+Group: 34
 Name: 
-XX (00000000),
-yy (00000100)
+Tsang Hing Ho (13340714),
+Mui chun Yin (13313945)
+Siu Chak Hang (13364400)
 
-Application link: https://projectsample381.render.com/
+Web app link:https://restaurants-record-system.onrender.com
 
 ********************************************
 # Login
