@@ -8,98 +8,68 @@ Siu Chak Hang (13364400)
 
 Web app link:https://restaurants-record-system.onrender.com
 
-********************************************
-# Login
-Through the login interface, each user can access the restaurant information management system by entering their username and password.
+This is a restaurant management system implemented using Node.js and MongoDB. It provides functionalities for creating, updating, and deleting restaurant information, as well as searching for restaurants based on their IDs.
 
-Each user has a userID and password;
-[
-	{userid: user1, password: cs381},
-	{userid: user2, password: cs381},
-	{suerid: user3, password: cs381}
+## Prerequisites
 
-]
+Before running the application, make sure you have the following installed:
 
-After successful login, userid is stored in seesion.
+- Node.js
+- MongoDB
 
-********************************************
-# Logout
-In the home page, each user can log out their account by clicking logout.
+## Installation
 
-********************************************
-# CRUD service
-- Create
--	A restaurant document may contain the following attributes with an example: 
-	1)	Restaurant Name (Shake Shack)
-	2)	Restaurant ID (00000003), restaurant id must be 8 digits
-	3)	Borough (Sha Tin)
-	4)	Street (null)
-	5)	Restaurant Telephone (26516828), telephone number must be 8 digits
-	6)	Cuisine (American)
-	7)	Description (... Very nice hamburger)
+1. Clone the repository:
 
-Restaurant Name and Restaurant ID is mandatory, and other attributes are optional.
+   ````bash
+   git clone https://github.com/your-username/restaurant-management-system.git
+   ```
 
-Create operation is post request, and all information is in body of request.
+2. Navigate to the project directory:
 
-********************************************
-# CRUD service
-- Read
--  There are two options to read and find restaurants list all information or searching by restaurant id.
+   ````bash
+   cd restaurant-management-system
+   ```
 
-1) List all information
-	display.ejs will be displayed with all restaurant ID;
-	clicking on restaurant ID, the details will be shown;
+3. Install the dependencies:
 
-2) Searching by restaurant id
-	input id of restaurant you want to find (00000003);
-	id is in the body of post request, and in display.ejs restaurant id will be shown as link;
-	clicking on restaurant ID, the details will be displayed;
+   ````bash
+   npm install
+   ```
 
-********************************************
-# CRUD service
-- Update
--	The user can update the restaurant information through the details interface.
--	Among the attribute shown above, Restaurant ID cannot be changed. Since restaurant ID is fixed, restaurant ID is searching criteria for updating information. 
+4. Configure the MongoDB connection:
 
--	A restaurant document may contain the following attributes with an example: 
-	1)	Restaurant Name (Shake Shack)
-	2)	Borough (Tung Chung)
-	3)	Street (Tat Tung Road)
-	4)	Restaurant Telephone (29871728), telephone number must be 8 digits
-	5)	Cuisine (American)
-	6)	Description (... Very nice hamburger)
+   - Open the `server.js` file.
+   - Locate the `mongourl` variable and replace it with your MongoDB connection string.
 
-	In example, we updated the borough, street and restaurant contact number.
+5. Start the server:
 
-********************************************
-# CRUD service
-- Delete
--	The user can delete the restaurant information through the details interface.
+   ````bash
+   node server.js
+   ```
 
-********************************************
-# Restful
-In this project, there are three HTTP request types, post, get and delete.
-- Post 
-	Post request is used for insert.
-	Path URL: /api/item/restaurantID/:restaurantID
-	Test: curl -X POST -H "Content-Type: application/json" --data '{"name": "Taro & Tea", "restaurangID":"00000004"}'localhost:8099/api/item/restaurantID/00000004/name/Taro & Tea
+6. Access the application in your browser at `http://localhost:3000`.
 
-- Get
-	Get request is used for find.
-	Path URL: /api/item/restaurantID/:restaurantID
-	Test: curl -X GET http://localhost:8099/api/item/restaurantID/00000002
+## Usage
 
-- Delete
-	Delete request is used for deletion.
-	Path URL: /api/item/restaurantID/:restaurantID
-	Test: curl -X DELETE localhost:8099/api/item/restaurantID/00000002
+- Login: Access the `/login` route to log in with your username and password.
+- Home: After logging in, you will be redirected to the home page (`/home`), where you can view and manage restaurants.
+- Create: Use the `/create` route to add a new restaurant by providing the required information.
+- Edit: Access the `/edit` route to modify the details of a specific restaurant.
+- Delete: Use the `/delete` route to delete a restaurant from the system.
+- Search: Access the `/find` route to search for a restaurant based on its ID.
+- Logout: Click on the "Logout" button to end your session.
 
-For all restful CRUD services, login should be done at first.
+## API Endpoints
 
+- `POST /api/item/restaurant_id/:restaurant_id`: Create a new restaurant with the provided ID.
+- `GET /api/item/restaurant_id/:restaurant_id`: Retrieve information about a restaurant based on its ID.
+- `DELETE /api/item/restaurantID/:restaurantID`: Delete a restaurant based on its ID.
 
-curl -X POST -H "Content-Type: application/json" --data '{"name": "Taro & Tea", "restaurangID":"00000004"}' http://localhost:8099/api/item/restaurantID/00000004
+## Contributing
 
-curl -X GET http://localhost:8099/api/item/restaurantID/00000002
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
-curl -X DELETE http://localhost:8099/api/item/restaurantID/00000002
+## License
+
+This project is licensed under the [MIT License](LICENSE).
