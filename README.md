@@ -53,11 +53,11 @@ Before running the application, make sure you have the following installed:
 ## Usage
 
 - Login: Access the `/login` route to log in with your username and password.
-  
-  <p>const usersinfo = [
+  *modify this part of server.js to add more account
+  const usersinfo = [
   { name: "admin", password: "admin" },
-             ];</p>
-<p>*modify this part of server.js to add more account</p>
+             ]
+
 - Home: After logging in, you will be redirected to the home page (`/home`), where you can view and manage restaurants.
 - Create: Use the `/create` route to add a new restaurant by providing the required information.
 - Edit: Access the `/edit` route to modify the details of a specific restaurant.
