@@ -68,7 +68,11 @@ Before running the application, make sure you have the following installed:
 ## RESTful API Endpoints
 
 - `POST /api/item/restaurant_id/:restaurant_id`: Create a new restaurant with the provided ID.
-- 
+- curl -X POST -H "Content-Type: application/json" -d '{
+  "restaurantID": "12345",
+  // other restaurant data...
+}' http://localhost:3000/api/item/restaurant_id
+```
 - `GET /api/item/restaurant_id/:restaurant_id`: Retrieve information about a restaurant based on its ID.
 - 
 - `DELETE /api/item/restaurantID/:restaurantID`: Delete a restaurant based on its ID.
