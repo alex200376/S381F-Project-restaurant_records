@@ -53,6 +53,11 @@ Before running the application, make sure you have the following installed:
 ## Usage
 
 - Login: Access the `/login` route to log in with your username and password.
+  
+  const usersinfo = [
+  { name: "admin", password: "admin" },
+             ];
+*modify this part of server.js to add more account
 - Home: After logging in, you will be redirected to the home page (`/home`), where you can view and manage restaurants.
 - Create: Use the `/create` route to add a new restaurant by providing the required information.
 - Edit: Access the `/edit` route to modify the details of a specific restaurant.
@@ -60,16 +65,12 @@ Before running the application, make sure you have the following installed:
 - Search: Access the `/find` route to search for a restaurant based on its ID.
 - Logout: Click on the "Logout" button to end your session.
 
-## API Endpoints
+## RESTful API Endpoints
 
 - `POST /api/item/restaurant_id/:restaurant_id`: Create a new restaurant with the provided ID.
+- 
 - `GET /api/item/restaurant_id/:restaurant_id`: Retrieve information about a restaurant based on its ID.
+- 
 - `DELETE /api/item/restaurantID/:restaurantID`: Delete a restaurant based on its ID.
 
-## Contributing
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
