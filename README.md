@@ -73,7 +73,7 @@ Before running the application, make sure you have the following installed:
 - Logout: Click on the "Logout" button to end your session.
 
 ## RESTful API Endpoints
--Get all restaurant 
+<h3>-Get all restaurant </h3>
 ````bash
 curl http://localhost:8099/api/restaurants
 ````
@@ -82,7 +82,7 @@ OR
 ````bash
 curl https://restaurants-record-system.onrender.com/api/restaurants
 ````
--Create a new restaurant with the provided ID.
+<h3>-Create a new restaurant with the provided ID.</h3>
  ````bash
 curl -X POST -H "Content-Type: application/json" -d "{\"restaurant_id\": \"12345678\", \"name\": \"Restaurant Name\", \"cuisine\": \"Restaurant Cuisine\", \"borough\": \"Restaurant Borough\", \"building\": \"Restaurant Building\", \"street\": \"Restaurant Street\", \"zipcode\": \"12345\"}" http://localhost:8099/api/restaurants
 ````
@@ -92,7 +92,7 @@ OR
 curl -X POST -H "Content-Type: application/json" -d "{\"restaurant_id\": \"12345678\", \"name\": \"Restaurant Name\", \"cuisine\": \"Restaurant Cuisine\", \"borough\": \"Restaurant Borough\", \"building\": \"Restaurant Building\", \"street\": \"Restaurant Street\", \"zipcode\": \"12345\"}" https://restaurants-record-system.onrender.com/api/restaurants
 ````
 
--Retrieve information about a restaurant based on its ID.
+<h3>-Retrieve information about a restaurant based on its ID.</h3>
 
 ````bash
 curl http://localhost:8099/api/restaurants/12345678
@@ -103,7 +103,7 @@ OR
 ````bash
 curl https://restaurants-record-system.onrender.com/api/restaurants/12345678
 ````
--Delete a restaurant based on its ID.
+<h3>-Delete a restaurant based on its ID.</h3>
 
 ````bash
    curl -X DELETE http://localhost:8099/api/restaurants/12345678
@@ -114,7 +114,7 @@ OR
   ````bash
    curl -X DELETE https://restaurants-record-system.onrender.com/api/restaurants/12345678
 ````
--update a restaurant by restaurant_id.
+<h3>-update a restaurant by restaurant_id.</h3>
 
 ````bash
 curl -X PUT  -H "Content-Type: application/json"  -d "{\"name\": \"Updated Restaurant\", \"cuisine\": \"Italian\", \"borough\": \"Manhattan\", \"building\": \"123\", \"street\": \"Main St\", \"zipcode\": \"10001\"}" "http://localhost:8099/api/restaurants/12345678"
