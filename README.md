@@ -48,7 +48,7 @@ Before running the application, make sure you have the following installed:
    node server.js
    ```
 
-6. Access the application in your browser at `http://localhost:3000`.
+6. Access the application in your browser at `http://localhost:8099`.
 
 ## Usage
 
