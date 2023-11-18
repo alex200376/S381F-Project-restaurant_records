@@ -78,40 +78,50 @@ Before running the application, make sure you have the following installed:
 curl http://localhost:8099/api/restaurants
 ````
 OR
+
 ````bash
 curl https://restaurants-record-system.onrender.com/api/restaurants
 ````
 -Create a new restaurant with the provided ID.
-   ````bash
+ ````bash
 curl -X POST -H "Content-Type: application/json" -d "{\"restaurant_id\": \"12345678\", \"name\": \"Restaurant Name\", \"cuisine\": \"Restaurant Cuisine\", \"borough\": \"Restaurant Borough\", \"building\": \"Restaurant Building\", \"street\": \"Restaurant Street\", \"zipcode\": \"12345\"}" http://localhost:8099/api/restaurants
 ````
 OR
+
   ````bash
 curl -X POST -H "Content-Type: application/json" -d "{\"restaurant_id\": \"12345678\", \"name\": \"Restaurant Name\", \"cuisine\": \"Restaurant Cuisine\", \"borough\": \"Restaurant Borough\", \"building\": \"Restaurant Building\", \"street\": \"Restaurant Street\", \"zipcode\": \"12345\"}" https://restaurants-record-system.onrender.com/api/restaurants
 ````
 
 -Retrieve information about a restaurant based on its ID.
-  ````bash
+
+````bash
 curl http://localhost:8099/api/restaurants/12345678
 ````
+
 OR
-  ````bash
+
+````bash
 curl https://restaurants-record-system.onrender.com/api/restaurants/12345678
 ````
 -Delete a restaurant based on its ID.
-   ````bash
+
+````bash
    curl -X DELETE http://localhost:8099/api/restaurants/12345678
 ````
+
 OR
 
   ````bash
    curl -X DELETE https://restaurants-record-system.onrender.com/api/restaurants/12345678
 ````
 -update a restaurant by restaurant_id.
+
 ````bash
 curl -X PUT  -H "Content-Type: application/json"  -d "{\"name\": \"Updated Restaurant\", \"cuisine\": \"Italian\", \"borough\": \"Manhattan\", \"building\": \"123\", \"street\": \"Main St\", \"zipcode\": \"10001\"}" "http://localhost:8099/api/restaurants/12345678"
 ````
+
 OR
+
 ````bash
 curl -X PUT  -H "Content-Type: application/json"  -d "{\"name\": \"Updated Restaurant\", \"cuisine\": \"Italian\", \"borough\": \"Manhattan\", \"building\": \"123\", \"street\": \"Main St\", \"zipcode\": \"10001\"}"  "https://restaurants-record-system.onrender.com/api/restaurants/12345678"
 ````
