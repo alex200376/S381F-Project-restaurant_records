@@ -83,6 +83,7 @@ OR
 curl https://restaurants-record-system.onrender.com/api/restaurants
 ````
 <h3>-Create a new restaurant with the provided ID.</h3>
+
  ````bash
 curl -X POST -H "Content-Type: application/json" -d "{\"restaurant_id\": \"12345678\", \"name\": \"Restaurant Name\", \"cuisine\": \"Restaurant Cuisine\", \"borough\": \"Restaurant Borough\", \"building\": \"Restaurant Building\", \"street\": \"Restaurant Street\", \"zipcode\": \"12345\"}" http://localhost:8099/api/restaurants
 ````
