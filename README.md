@@ -52,10 +52,10 @@ Before running the application, make sure you have the following installed:
 - name (String): The name of the restaurant.
 - cuisine (String): The type of cuisine served at the restaurant.
 - address (Object): An object containing address details of the restaurant, including:
--- building (String): The building number or identifier.
--- borough (String): The borough or district where the restaurant is located.
--- street (String): The street name.
--- zipcode (String): The ZIP code of the restaurant's location in 5 ditgits.
+- building (String): The building number or identifier.
+- borough (String): The borough or district where the restaurant is located.
+- street (String): The street name.
+- zipcode (String): The ZIP code of the restaurant's location in 5 ditgits.
 
 ## Usage
 
@@ -76,41 +76,41 @@ Before running the application, make sure you have the following installed:
 -Get all restaurant 
 ````bash
 curl http://localhost:8099/api/restaurants
-```
+````
 OR
 ````bash
 curl https://restaurants-record-system.onrender.com/api/restaurants
-```
+````
 - Create a new restaurant with the provided ID.
    ````bash
 curl -X POST -H "Content-Type: application/json" -d "{\"restaurant_id\": \"12345678\", \"name\": \"Restaurant Name\", \"cuisine\": \"Restaurant Cuisine\", \"borough\": \"Restaurant Borough\", \"building\": \"Restaurant Building\", \"street\": \"Restaurant Street\", \"zipcode\": \"12345\"}" http://localhost:8099/api/restaurants
-```
+````
 OR
   ````bash
 curl -X POST -H "Content-Type: application/json" -d "{\"restaurant_id\": \"12345678\", \"name\": \"Restaurant Name\", \"cuisine\": \"Restaurant Cuisine\", \"borough\": \"Restaurant Borough\", \"building\": \"Restaurant Building\", \"street\": \"Restaurant Street\", \"zipcode\": \"12345\"}" https://restaurants-record-system.onrender.com/api/restaurants
-```
+````
 
 - Retrieve information about a restaurant based on its ID.
   ````bash
 curl http://localhost:8099/api/restaurants/12345678
-```
+````
 OR
   ````bash
 curl https://restaurants-record-system.onrender.com/api/restaurants/12345678
-```
+````
 -Delete a restaurant based on its ID.
    ````bash
    curl -X DELETE http://localhost:8099/api/restaurants/12345678
-```
+````
 OR
 ````bash
    curl -X DELETE https://restaurants-record-system.onrender.com/api/restaurants/12345678
-```
+````
 -update a restaurant by restaurant_id
 ````bash
 curl -X PUT  -H "Content-Type: application/json"  -d "{\"name\": \"Updated Restaurant\", \"cuisine\": \"Italian\", \"borough\": \"Manhattan\", \"building\": \"123\", \"street\": \"Main St\", \"zipcode\": \"10001\"}" "http://localhost:8099/api/restaurants/12345678"
-```
+````
 OR
 ````bash
 curl -X PUT  -H "Content-Type: application/json"  -d "{\"name\": \"Updated Restaurant\", \"cuisine\": \"Italian\", \"borough\": \"Manhattan\", \"building\": \"123\", \"street\": \"Main St\", \"zipcode\": \"10001\"}"  "https://restaurants-record-system.onrender.com/api/restaurants/12345678"
-```
+````
