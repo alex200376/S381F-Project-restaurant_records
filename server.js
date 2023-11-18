@@ -245,7 +245,7 @@ app.get("/delete", requireAuthentication, async (req, res) => {
   }
 });
 
-// Create a new restaurant
+
 app.post('/api/restaurants', async (req, res) => {
   try {
     const db = await connectToMongo();
@@ -269,7 +269,7 @@ app.post('/api/restaurants', async (req, res) => {
     res.status(500).json({ error: 'An error occurred while creating the restaurant.' });
   }
 });
-// Get all restaurants
+
 app.get('/api/restaurants', async (req, res) => {
   try {
     const db = await connectToMongo();
@@ -281,7 +281,7 @@ app.get('/api/restaurants', async (req, res) => {
   }
 });
 
-// Get a restaurant by ID
+
 app.get('/api/restaurants/:restaurant_id', async (req, res) => {
   try {
     const db = await connectToMongo();
@@ -297,7 +297,6 @@ app.get('/api/restaurants/:restaurant_id', async (req, res) => {
   }
 });
 
-// Update a restaurant by restaurant_id
 app.put('/api/restaurants/:restaurant_id', async (req, res) => {
   try {
     const db = await connectToMongo();
@@ -326,7 +325,7 @@ app.put('/api/restaurants/:restaurant_id', async (req, res) => {
   }
 });
 
-// Delete a restaurant by restaurant_id
+
 app.delete('/api/restaurants/:restaurant_id', async (req, res) => {
   try {
     const db = await connectToMongo();
@@ -343,7 +342,7 @@ app.delete('/api/restaurants/:restaurant_id', async (req, res) => {
   }
 });
 
-// Start the server
+
 app.listen(8099, () => {
   console.log("Server running on port 8099");
 });
