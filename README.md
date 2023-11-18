@@ -66,18 +66,24 @@ Before running the application, make sure you have the following installed:
 - Logout: Click on the "Logout" button to end your session.
 
 ## RESTful API Endpoints
-
-- `POST /api/item/restaurant_id/:restaurant_id`: Create a new restaurant with the provided ID.
-   ````bash
-  curl -X POST -H "Content-Type: application/json" -d '{ "restaurant_id": "12345678", "name": "Restaurant Name", "cuisine": "Cuisine Type", "address": { "building": "123", "borough": "Borough", "street": "Street Name", "zipcode": "12345" } }' http://localhost:3000/create
+-Get all restaurant 
+````bash
+curl http://localhost:8099/api/restaurants
 ```
-- `GET /api/item/restaurant_id/:restaurant_id`: Retrieve information about a restaurant based on its ID.
+- Create a new restaurant with the provided ID.
+   ````bash
+  curl -X POST -H "Content-Type: application/json" -d "{ \"restaurant_id\": \"12345678\", \"name\": \"Restaurant Name\", \"cuisine\": \"Cuisine Type\", \"address\": { \"building\": "123", "borough": "Borough", "street": "Street Name", "zipcode": "12345" } }" http://localhost:8099/api/restaurants
+```
+
+- Retrieve information about a restaurant based on its ID.
   ````bash
-
+curl http://localhost:8099/api/restaurants/12345678
 ```
-- `DELETE /api/item/restaurantID/:restaurantID`: Delete a restaurant based on its ID.
+-Delete a restaurant based on its ID.
    ````bash
-
-   ```
-
-
+   curl -X DELETE http://localhost:8099/api/restaurants/12345678
+```
+-update a restaurant by restaurant_id
+````bash
+  curl -X PUT -H "Content-Type: application/json" -d "{ \"name\": \"Updated Restaurant\", \"cuisine\": \"Italian"\, \"borough\": \"Manhattan\", \"address\": { \"building\": \"1234\", \"street\": \"Main Street\", \"zipcode\": \"10001\" } }" "http://localhost:8099/api/restaurants/12345678"
+```

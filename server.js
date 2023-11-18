@@ -262,12 +262,8 @@ app.post('/api/restaurants', async (req, res) => {
       },
     };
     const result = await db.collection('restaurants').insertOne(newRestaurant);
-    insertedCount=+1;
-    if (result.insertedCount === 1) {
-      res.status(201).json({ message: 'Restaurant created successfully.', restaurant: newRestaurant });
-    } else {
-      res.status(500).json({ error: 'Failed to create the restaurant.' });
-    }
+    res.status(201).json({ message: 'Restaurant created successfully.'});
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while creating the restaurant.' });
@@ -311,9 +307,11 @@ app.put('/api/restaurants/:restaurant_id', async (req, res) => {
         name: req.body.name,
         cuisine: req.body.cuisine,
         borough: req.body.borough,
-        building: req.body.building,
-        street: req.body.street || '',
-        zipcode: req.body.zipcode || '',
+        address: {
+          building: req.body.building,
+          street: req.body.street || '',
+          zipcode: req.body.zipcode || '',
+        },
       },
     };
     const result = await db.collection('restaurants').updateOne(documentID, updatedDocument);
