@@ -74,6 +74,7 @@ Before running the application, make sure you have the following installed:
 
 ## RESTful API Endpoints
 <h3>-Get all restaurant </h3>
+
 ````bash
 curl http://localhost:8099/api/restaurants
 ````
