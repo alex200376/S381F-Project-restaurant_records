@@ -37,18 +37,14 @@ Before running the application, make sure you have the following installed:
    npm install
    ```
 
-4. Configure the MongoDB connection:
 
-   - Open the `server.js` file.
-   - Locate the `mongourl` variable and replace it with your MongoDB connection string.
-
-5. Start the server:
+4. Start the server:
 
    ````bash
    node server.js
    ```
 
-6. Access the application in your browser at `http://localhost:8099`.
+5. Access the application in your browser at `http://localhost:8099`.
 
 ## Usage
 
