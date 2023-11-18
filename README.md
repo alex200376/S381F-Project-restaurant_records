@@ -46,16 +46,16 @@ Before running the application, make sure you have the following installed:
 
 5. Access the application in your browser at `http://localhost:8099` or 'https://restaurants-record-system.onrender.com'.
 ## Data structure
--The restaurant data consists of the following fields:
+- The restaurant data consists of the following fields:
 
--restaurant_id (String): The unique identifier for the restaurant in 8 digits..
--name (String): The name of the restaurant.
--cuisine (String): The type of cuisine served at the restaurant.
--address (Object): An object containing address details of the restaurant, including:
---building (String): The building number or identifier.
---borough (String): The borough or district where the restaurant is located.
---street (String): The street name.
---zipcode (String): The ZIP code of the restaurant's location in 5 ditgits.
+- restaurant_id (String): The unique identifier for the restaurant in 8 digits..
+- name (String): The name of the restaurant.
+- cuisine (String): The type of cuisine served at the restaurant.
+- address (Object): An object containing address details of the restaurant, including:
+-- building (String): The building number or identifier.
+-- borough (String): The borough or district where the restaurant is located.
+-- street (String): The street name.
+-- zipcode (String): The ZIP code of the restaurant's location in 5 ditgits.
 
 ## Usage
 
